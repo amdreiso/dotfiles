@@ -7,6 +7,8 @@ Plug 'wadackel/vim-dogrun'
 Plug 'TheNiteCoder/mountaineer.vim'
 Plug 'morhetz/gruvbox'
 Plug 'flazz/vim-colorschemes'
+Plug 'sainnhe/sonokai'
+Plug 'girishji/vimcomplete'
 
 call plug#end()
 
