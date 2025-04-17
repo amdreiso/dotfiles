@@ -8,6 +8,8 @@ texts=(
 	"{◕ ◡ ◕}✿" 
 	"play juice galaxy"
 	"hearts of iron took half my life away somebody help"
+	"isopod"
+	"butterflies"
 )	
 
 echo ${texts[$RANDOM % ${#texts[@]}]}
