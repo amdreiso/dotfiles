@@ -9,9 +9,11 @@ Plug 'morhetz/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'sainnhe/sonokai'
 Plug 'girishji/vimcomplete'
+Plug 'vimsence/vimsence'
 
 call plug#end()
 
+set t_Co=256
 
 set number
 set relativenumber
@@ -30,13 +32,11 @@ set hlsearch
 set wrap
 
 set noswapfile
+set showtabline=2
 
+
+set termguicolors
 syntax on
-
-
-if has('termguicolors')
-	set termguicolors
-endif
 
 colorscheme mountaineer
 

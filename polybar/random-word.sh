@@ -10,7 +10,27 @@ texts=(
 	"hearts of iron took half my life away somebody help"
 	"isopod"
 	"butterflies"
+	"i'd like to program in rust but i'm too stupid for that"
+	"bugs keep hitting my face"
+	"mockery"
+	"men"
+	"learning russian"
+	"learning german"
+	"tried learning greek"
+	"tried learning french"
+	"(not over yet)"
+	"social cringe"
+	"conoci una argentina en vrchat una vez"
+	"breakcore is better than ritalin"
+	"love my friends :3"
+	"muscles are sore atm"
+	"fluent in english!"
+	"fluent in spanish! (lie)"
+	"wanna learn rust but fuck is it difficult"
+	"living to the stereotype"
+	"stuttering my thoughts away"
+	"yes sir"
 )	
 
-echo ${texts[$RANDOM % ${#texts[@]}]}
+echo ${texts[$RANDOM % ${#texts[@]}]} "|"
 

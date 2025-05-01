@@ -1,7 +1,7 @@
 
 set $mod Mod4
-set $terminal i3-sensible-terminal
-set $wallpaper_path ~/Pictures/wallpaper5.png
+set $terminal alacritty
+set $wallpaper_path ~/Pictures/wallpaper4.jpg
 
 # Font for win
 # is used in the bar {} block below.
@@ -39,7 +39,7 @@ exec $terminal
 exec_always picom
 
 exec_always --no-startup-id killall polybar
-exec_always --no-startup-id ~/.config/polybar/polybar-launch.sh
+#exec_always --no-startup-id ~/.config/polybar/polybar-launch.sh
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -205,31 +205,32 @@ bindsym $mod+space exec bash ~/dev/kblayout/kblayout.sh
 
 set $bg_color #080808
 set $inactive_border #000000
-set $active_border #cba6f7
+set $active_border #880000
 set $focus_color #ffffff
 set $urgent_color #ff0000
 set $workspace_bg #fff
 set $workspace_fg #fff
 
 # Window borders
-client.focused          $active_border $active_border $bg_color
-client.unfocused        $inactive_border $inactive_border $bg_color
+client.focused          $active_border $active_border $bg_color $active_border
+client.unfocused        $inactive_border $inactive_border $bg_color $inactive_border
 client.urgent           $urgent_color $urgent_color $bg_color
-client.placeholder      $bg_color $bg_color $bg_color
+client.placeholder      $bg_color $bg_color $bg_color $inactive_border
 
 
 #setting wallpaper
-exec_always --no-startup-id feh --bg-scale $wallpaper_path
+#exec_always --no-startup-id feh --bg-scale $wallpaper_path
 
 
 # Tiling
-gaps inner 5
-default_border pixel 4 
+gaps inner 0
+default_border pixel 0 
 for_window [class=".*"] border pixel 2
 
-default_orientation vertical
+default_orientation horizontal
 for_window [class=".*"] split toggle 
 bindsym $mod+shift+p split toggle kill 
 bindsym $mod+shift+o layout toggle split 
 
+for_window [window_role="fovy_popup"] floating enable, move position center
 
