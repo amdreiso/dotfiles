@@ -5,15 +5,13 @@ call plug#begin()
 Plug 'whatyouhide/vim-gotham'
 Plug 'wadackel/vim-dogrun'
 Plug 'TheNiteCoder/mountaineer.vim'
-Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
 Plug 'sainnhe/sonokai'
-Plug 'girishji/vimcomplete'
-Plug 'vimsence/vimsence'
+Plug 'Stoozy/vimcord'
+Plug 'morhetz/gruvbox'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
-
-set t_Co=256
 
 set number
 set relativenumber
@@ -32,14 +30,24 @@ set hlsearch
 set wrap
 
 set noswapfile
-set showtabline=2
-
 
 set termguicolors
 syntax on
 
-colorscheme mountaineer
+set background=dark
 
-hi Normal guibg=NONE ctermbg=NONE
-hi EndOfBuffer guibg=NONE ctermbg=NONE
+let g:gruvbox_contrast_dark = 'hard'
+
+colorscheme	dogrun 
+
+hi Normal guibg=NONE
+
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
+
+
+
+
+
 
