@@ -11,6 +11,7 @@ Plug 'morhetz/gruvbox'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'vimwiki/vimwiki'
 
 call plug#end()
 
