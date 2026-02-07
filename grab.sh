@@ -7,6 +7,7 @@ cp -rf ~/.config/dunst ./
 cp -rf ~/.config/polybar ./
 cp -rf ~/.config/rofi ./
 cp -rf ~/.bashrc ./
+cp -rf ~/.tmux.conf ./
 
 echo "Grabbed all of the dotfiles"
 
