@@ -11,3 +11,5 @@ PS1=' \[\e[07m\] \h \[\e[0m\] \W\ > '
 
 export PATH="$HOME/.local/bin:$PATH"
 
+eval "$(starship init bash)"
+

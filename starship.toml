@@ -17,6 +17,8 @@
 # $character"""
 
 format = " $hostname $directory $git_branch$git_status > "
+right_format = """$cmd_duration"""
+add_newline = true
 
 [hostname]
 ssh_only = false
@@ -29,10 +31,6 @@ truncation_length = 1
 style = "fg:blue"
 
 
-right_format = """$cmd_duration"""
-
-# Inserts a blank line between shell prompts
-add_newline = true
 
 # Making a single line prompt
 [line_break]

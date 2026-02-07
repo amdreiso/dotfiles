@@ -12,6 +12,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -41,6 +43,7 @@ filetype plugin on
 syntax on
 
 set background=dark
+set clipboard=unnamedplus
 
 " let g:gruvbox_contrast_dark = 'hard'
 
@@ -57,7 +60,9 @@ inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
 
 
-" nnoremap <leader>q <C-^>
+nnoremap <leader>q <C-^>
+nnoremap <leader>l :w<CR>
+nnoremap <leader>f :Files<CR>
 
 
 
