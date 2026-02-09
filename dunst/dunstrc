@@ -4,4 +4,5 @@ frame_width = 2
 frame_color = "#88c0d0"
 background = "#181818"
 foreground = "#eeeeee"
-offset = 0x0
+offset = 0x20
+

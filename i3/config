@@ -22,6 +22,10 @@ bindsym $mod+KP_Down exec prismlauncher
 # game dev
 bindsym $mod+KP_Page_Down exec steam -applaunch 1670460 & steam -applaunch 431730 & /home/amdrei/.local/bin/circuita-room-visualizer
 
+# midi controls
+exec_always --no-starup-id ~/programming/midibindings/run.sh
+bindsym $mod+KP_Left exec ~/programming/midibindings/run.sh | notify-send
+
 focus_follows_mouse no
 
 # Font for window titles. Will also be used by the bar unless a different font
