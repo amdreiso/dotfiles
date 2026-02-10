@@ -3,6 +3,6 @@
 @theme "/usr/share/rofi/themes/dmenu.rasi"
 
 configuration {
-	font: "SauceCodePro Nerd Font 10";
+	font: "Terminess Nerd Font 10";
 }
 
