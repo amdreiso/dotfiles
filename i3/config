@@ -223,14 +223,11 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
-
 # exec_always --no-startup-id pkill polybar
 # exec_always --no-startup-id ~/.config/polybar/polybar-launch.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-
 
 set $active_border #101010
 set $active_border2 #ff00ff

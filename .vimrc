@@ -47,7 +47,7 @@ set clipboard=unnamedplus
 
 " let g:gruvbox_contrast_dark = 'hard'
 
-colorscheme	wildcharm
+colorscheme	retrobox
 
 hi Normal guibg=NONE
 hi NormalNC guibg=NONE ctermbg=NONE
