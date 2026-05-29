@@ -1,0 +1,50 @@
+
+# Default colors
+[colors.primary]
+background = '#1c1c1c'
+foreground = '#d6f3ff'
+
+# Normal colors (Frutiger Aero - blue dominant)
+[colors.normal]
+black   = '#12324a'  
+red     = '#4aa3ff'  
+green   = '#3ddbd9'  
+yellow  = '#6fe3ff' 
+blue    = '#2f8cff'  
+magenta = '#7aa6ff'  
+cyan    = '#00d4ff'  
+white   = '#bfefff'  
+
+# Bright colors (glossy / glassy highlights)
+[colors.bright]
+black   = '#1b4d6b'
+red     = '#6bbcff'
+green   = '#5ee6e4'
+yellow  = '#9ff0ff'
+blue    = '#5aa6ff'
+magenta = '#9bbcff'
+cyan    = '#33e1ff'
+white   = '#e6fbff'
+
+[font]
+normal = { family = "SauceCodePro Nerd Font" }
+bold = { family = "SauceCodePro Nerd Font" }
+italic = { family = "SauceCodePro Nerd Font" }
+
+size = 14.0
+
+[cursor]
+style = { shape="Block", blinking="Never" }
+
+[mouse]
+hide_when_typing = true
+
+[window]
+opacity = 0.80
+
+[window.padding]
+x = 2
+y = 2
+
+
+

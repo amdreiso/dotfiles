@@ -5,3 +5,10 @@ if type "xrandr"; then
 else
   polybar --reload toph &
 fi
+
+# if type "xrandr"; then
+#   MONITOR=DisplayPort-1 polybar --reload toph &
+# else
+#   polybar --reload toph &
+# fi
+# 

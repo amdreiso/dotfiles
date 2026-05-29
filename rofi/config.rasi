@@ -1,8 +1,12 @@
 //@theme "~/.config/rofi/catppuccin-default.rasi"
 //@theme "/usr/share/rofi/themes/sidebar.rasi"
-@theme "/usr/share/rofi/themes/dmenu.rasi"
+//@theme "/usr/share/rofi/themes/dmenu.rasi"
 
 configuration {
-	font: "SauceCodePro Nerd Font 10";
+	font: "SauceCodePro Nerd Font 16";
 }
 
+
+//@theme "/usr/share/rofi/themes/DarkBlue.rasi"
+
+@theme "/usr/share/rofi/themes/dmenu.rasi"

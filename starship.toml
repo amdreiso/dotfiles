@@ -22,13 +22,15 @@ add_newline = true
 
 [hostname]
 ssh_only = false
-format = "[ $hostname ]($style)"
+#format = "[ $hostname ]($style)"
+format = "[ ɞϊɞ ]($style)"
 style = "fg:#000000 bg:white"
 
 [directory]
-format = "[$path]($style)"
+format = "[$path/]($style)"
 truncation_length = 1
-style = "fg:blue"
+style = "fg:#7777ff"
+home_symbol = "~"
 
 
 
@@ -80,35 +82,35 @@ discharging_symbol = " "
 # Setting Icons for git status
 [git_status]
 # style = "bold white"
-conflicted = "🏳"
-ahead = "🏎💨"
-behind = "😰"
-diverged = "😵"
-up_to_date = ""
-untracked = "🤷"
-stashed = "📦"
-modified = "📝"
-staged = '[++\($count\)](green)'
-renamed = "👅"
-deleted = "🗑"
+#conflicted = "🏳"
+#ahead = "🏎💨"
+#behind = "😰"
+#diverged = "😵"
+#up_to_date = ""
+#untracked = "🤷"
+#stashed = "📦"
+#modified = "📝"
+#staged = '[++\($count\)](green)'
+#renamed = "👅"
+#deleted = "🗑"
 
 #style = "bold red"
-#conflicted = "✗"
-#ahead = ""
-#behind = ""
-#diverged = "✗"
-#up_to_date = ""
-#untracked = ""
-#stashed = "✗"
-#modified = "✗"
-#staged = "✗"
-#renamed = ""
-#deleted = ""
-##ahead = "⇡${count}"
-##diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-##behind = "⇣${count}"
-## format='([$all_status$ahead_behind]($style) )'
-#format='([$all_status]($style) )'
+conflicted = "✗"
+ahead = ""
+behind = ""
+diverged = "✗"
+up_to_date = ""
+untracked = ""
+stashed = "✗"
+modified = "✗"
+staged = "✗"
+renamed = ""
+deleted = ""
+#ahead = "⇡${count}"
+#diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+#behind = "⇣${count}"
+# format='([$all_status$ahead_behind]($style) )'
+format='([$all_status]($style) )'
 disabled = false
 
 # Setting sudo icon
@@ -193,8 +195,8 @@ symbol = " "
 [git_branch]
 symbol = " "
 # format = "[$symbol$branch(:$remote_branch)]($style) "
-style = "bold italic red"
-format = "[git:](bold blue)[\\(](bold blue)[$branch(:$remote_branch)]($style)[\\)](bold blue) "
+style = "fg:#4477ff italic"
+format = "[git:](bold yellow)[\\(](bold blue)[$branch(:$remote_branch)]($style)[\\)](bold blue) 🧙"
 
 [golang]
 disabled = true

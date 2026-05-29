@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-langs=("us" "br")
+langs=("us" "br" "ru")
 index=0
 file="keyboard_map_index.txt"
 
