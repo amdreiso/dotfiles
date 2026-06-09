@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-langs=("us" "br" "ru")
+langs=("us" "br")
 index=0
 file="keyboard_map_index.txt"
+file2="keyboard_map_layout.txt"
 
 setk() {
 	if [ -f $file ]; then
@@ -16,6 +17,7 @@ setk() {
 	fi
 
 	echo $index > ${file}
+	echo ${langs[$index]} > ${file2}
 
 	setxkbmap ${langs[$index]}
 }

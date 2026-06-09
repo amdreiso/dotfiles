@@ -3,7 +3,7 @@
 //@theme "/usr/share/rofi/themes/dmenu.rasi"
 
 configuration {
-	font: "SauceCodePro Nerd Font 16";
+	font: "FiraCode Nerd Font 10";
 }
 
 

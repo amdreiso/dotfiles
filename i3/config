@@ -3,10 +3,10 @@ set $mod Mod4
 set $terminal alacritty
 set $wallpaper ~/Pictures/wallpaper.png
 
-font pango:SauceCodePro Nerd Font 10
+font pango:FiraCode Nerd Font 8
 
-# tv monitor
-exec_always --no-startup-id xrandr --output HDMI-A-0 --mode 1360x768 --rate 60 --pos 0x0 --set "scaling mode" "Full" --set "Broadcast RGB" "Full" --output DisplayPort-1 --primary --mode 2560x1440 --rate 164.83 --right-of HDMI-A-0
+# double monitors
+exec_always --no-startup-id xrandr --output HDMI-A-0 --mode 1360x768 --rate 60 --pos 0x0 --output DisplayPort-1 --primary --mode 2560x1440 --rate 164.83 --right-of HDMI-A-0
 
 # starter on 1
 bindsym $mod+KP_End exec firefox & steam & $terminal 
@@ -24,8 +24,9 @@ steam -applaunch 431730 & /home/amdrei/.local/bin/circuita-room-visualizer
 # butterfly on 9
 bindsym $mod+KP_Page_Up exec echo ɞϊɞ | xclip -selection clipboard
 
-focus_follows_mouse no
+bindsym $mod+KP_Home exec python3 ~/.config/i3/cog.py
 
+focus_follows_mouse no
 
 exec_always --no-startup-id ~/.xprofile
 
@@ -122,8 +123,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-
 # split in vertical orientation
 bindsym $mod+v split v
 
@@ -199,8 +198,8 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -253,8 +252,8 @@ set $workspace_fg #bfefff
 #client.placeholder      $bg_color $bg_color $workspace_fg $bg_color $bg_color
 
 bar {
-		status_command i3status
-	}
+	status_command i3status -c ~/.config/i3status/config
+}
 
 for_window [window_role="PictureInPicture"] sticky enable
 
