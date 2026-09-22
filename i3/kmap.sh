@@ -9,7 +9,7 @@ setk() {
 	if [ -f $file ]; then
 		index=$(cat $file)
 	fi
-
+	
 	((index++))
 
 	if [ $index -ge ${#langs[@]} ]; then

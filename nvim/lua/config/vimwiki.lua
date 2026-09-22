@@ -80,6 +80,3 @@ vim.fn.timer_start(100, function()
   i = i % #colors + 1
 end, { ["repeat"] = -1 })
 
-
-
-

@@ -25,7 +25,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 local cs = {
-	keyword = "#ff3058",
+	keyword = "#4682b4",
 	popup = "#181818"
 }
 
@@ -65,12 +65,3 @@ for i=1, #popups do
 	})
 end
 
-
-
-
-
-
---highlight TolinKeyword guifg=cs.keyword
---highlight TolinNumber guifg=cs.keyword
---highlight TolinComment guifg=cs.keyword
---highlight TolinString guifg=cs.keyword
