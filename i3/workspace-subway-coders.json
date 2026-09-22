@@ -1,0 +1,16 @@
+{
+    "type": "con",
+    "layout": "splith",
+    "nodes": [
+        {
+            "swallows": [
+                { "class": "^Alacritty$" }
+            ]
+        },
+        {
+            "swallows": [
+                { "class": "^firefox$" }
+            ]
+        }
+    ]
+}
