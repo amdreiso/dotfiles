@@ -23,6 +23,7 @@ steam -applaunch 431730 & /home/amdrei/.local/bin/circuita-room-visualizer
 # butterfly on 9
 bindsym $mod+KP_Page_Up exec echo ɞϊɞ | xclip -selection clipboard
 
+
 focus_follows_mouse no
 
 exec_always --no-startup-id ~/.xprofile
@@ -35,9 +36,12 @@ exec_always --no-startup-id feh --bg-scale $wallpaper
 bindsym $mod+space exec bash ~/.config/i3/kmap.sh set
 bindsym $mod+q exec pcmanfm
 
-# polybar
-#exec_always --no-startup-id killall polybar
-#exec_always --no-startup-id ~/.config/polybar/polybar-launch.sh
+mode "theme" {
+	bindsym c exec bash ~/.config/theme/switch.sh
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+Control+k mode "theme"
 
 # ninjabrainbot
 bindsym $mod+End exec --no-startup-id sh -c 'java -jar ~/Documents/Ninjabrain-Bot-1.5.1.jar --title floating-kitty && resetti amdrei'
