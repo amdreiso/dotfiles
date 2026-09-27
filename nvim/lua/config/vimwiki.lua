@@ -16,6 +16,15 @@ vim.keymap.set("n", "<F12>", function()
 	print("Uploaded to github.")
 end)
 
+vim.keymap.set("n", "<F11>", function()
+	vim.cmd("write")
+	vim.fn.jobstart(
+		{ vim.fn.expand(folder .. "pull.sh") },
+		{ detach = true }
+	)
+	print("Pulled from github.")
+end)
+
 vim.g.vimwiki_list = {
   {
     path = folder,
