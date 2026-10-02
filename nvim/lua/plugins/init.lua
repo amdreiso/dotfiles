@@ -15,7 +15,7 @@ return require("packer").startup(function(use)
 	use "ap/vim-css-color"
 	use "vimwiki/vimwiki"
 	use "echasnovski/mini.pairs"
-	use "barrettruth/live-server.nvim"
+	--use "barrettruth/live-server.nvim"
 	use "andweeb/presence.nvim"
 	use {
 		"3rd/image.nvim",

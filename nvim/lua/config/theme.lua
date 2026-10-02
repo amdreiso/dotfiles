@@ -11,16 +11,20 @@ vim.cmd.highlight({"NormalNC", "guibg=NONE", "ctermbg=NONE"})
 vim.filetype.add({
 	extension = {
 		tolin = "tolin",
+		gml = "gml",
 	},
 })
 
+require("config.gml")
+
 local dark_cs = {
 	foreground = "#d9d9d9",
+	--keyword = "#4682b4",
 	keyword = "#4682b4",
 	popup = "#181818",
-	bold = true,
-	italic = true,
-	cursorline = "#303030"
+	bold = false,
+	italic = false,
+	cursorline = "#252525"
 }
 
 local light_cs = {
@@ -28,7 +32,7 @@ local light_cs = {
 	keyword = "#2222ff",
 	popup = "#ffffff",
 	bold = true,
-	italic = true,
+	italic = false,
 	cursorline = "#e0e0f0"
 }
 
@@ -36,6 +40,7 @@ function colors(cs)
 	vim.api.nvim_set_hl(0, "CursorLine", {
 		bg = cs.cursorline,
 	})
+
 
 	for _, group in ipairs({
 		"Normal",
@@ -76,7 +81,7 @@ function colors(cs)
 	}) do
 		vim.api.nvim_set_hl(0, group, {
 			fg = cs.keyword,
-			bold = true,
+			bold = false,
 			italic = cs.italic,
 		})
 	end
@@ -96,6 +101,7 @@ elseif index == "1" then
 	colors(light_cs)
 	cs = light_cs
 end
+
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "tolin",

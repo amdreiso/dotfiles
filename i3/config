@@ -1,9 +1,9 @@
 
 set $mod Mod4
-set $terminal kitty
+set $terminal alacritty
 set $wallpaper ~/Pictures/wallpaper.png
 
-font pango:SauceCodePro Nerd Font 8
+font pango:monospace 7
 
 exec_always --no-startup-id xrandr --output HDMI-A-0 --mode 1360x768 --rate 60 --pos 0x0 --output DisplayPort-1 --primary --mode 2560x1440 --rate 164.83 --left-of HDMI-A-0
 
@@ -23,7 +23,6 @@ steam -applaunch 431730 & /home/amdrei/.local/bin/circuita-room-visualizer
 # butterfly on 9
 bindsym $mod+KP_Page_Up exec echo ɞϊɞ | xclip -selection clipboard
 
-
 focus_follows_mouse no
 
 exec_always --no-startup-id ~/.xprofile
@@ -32,7 +31,6 @@ exec_always --no-startup-id xsetroot -cursor_name left_ptr
 exec_always --no-startup-id setxkbmap -option caps:escape
 exec_always --no-startup-id feh --bg-scale $wallpaper
 
-# Toggle keyboard layout between English (us) and Portuguese (br)
 bindsym $mod+space exec bash ~/.config/i3/kmap.sh set
 bindsym $mod+q exec pcmanfm
 
@@ -42,9 +40,6 @@ mode "theme" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+Control+k mode "theme"
-
-# ninjabrainbot
-bindsym $mod+End exec --no-startup-id sh -c 'java -jar ~/Documents/Ninjabrain-Bot-1.5.1.jar --title floating-kitty && resetti amdrei'
 
 # Screenshots
 bindsym Print exec --no-startup-id maim --nooopengl "/home/$USER/Pictures/$(date)"
@@ -56,22 +51,10 @@ bindsym Ctrl+Print exec --no-startup-id maim --noopengl | xclip -selection clipb
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --noopengl --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --noopengl --select | xclip -selection clipboard -t image/png
 
-# Start XDG autostart .desktop files using dex. See also
-# https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
@@ -191,12 +174,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
         bindsym j resize shrink height 10 px or 10 ppt
@@ -215,10 +192,6 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-
-
-# exec_always --no-startup-id pkill polybar
 
 # === Frutiger Aero (blue / glass) ===
 
@@ -241,7 +214,6 @@ set $urgent_color #4aa3ff
 set $workspace_bg #0b1c2c
 set $workspace_fg #bfefff
 
-
 # === Window borders ===
 
 # focused: border background text indicator child_border
@@ -256,21 +228,5 @@ bar {
 }
 
 for_window [window_role="PictureInPicture"] sticky enable
-
-for_window [class="ninjabrainbot-Main"] mark alwaysontop
 bindsym $mod+t [con_mark="alwaysontop"] focus
-
-#for_window [class="REAPER" window_role="pop-up"] floating enable, move position center
-
-#default_border none
-#hide_edge_borders none
-#
-## for_window [tiling] border none
-#for_window [floating] border pixel 2
-#for_window [tiling] border pixel 0
-
-
-
-
-
 

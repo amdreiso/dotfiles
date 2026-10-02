@@ -1,0 +1,28 @@
+
+[general]
+live_config_reload = true
+
+[window]
+title = "termy"
+
+[font]
+size = 16
+normal.family = "SpaceMonoNerdFont"
+
+[colors.primary]
+background = "#000000"
+foreground = "#ffffff"
+
+[colors.normal]
+black = "#181818"
+white = "#eeeeee"
+red = "#ff5555"
+yellow = "#ffff55"
+green = "#55ff55"
+blue = "#5555ff"
+cyan = "#55ffff"
+magenta = "#ff00ff"
+
+[mouse]
+hide_when_typing = true
+

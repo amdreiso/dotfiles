@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/andy/.cache/nvim/packer_hererocks/2.1.1787165859/share/lua/5.1/?.lua;/home/andy/.cache/nvim/packer_hererocks/2.1.1787165859/share/lua/5.1/?/init.lua;/home/andy/.cache/nvim/packer_hererocks/2.1.1787165859/lib/luarocks/rocks-5.1/?.lua;/home/andy/.cache/nvim/packer_hererocks/2.1.1787165859/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/andy/.cache/nvim/packer_hererocks/2.1.1787165859/lib/lua/5.1/?.so"
+local package_path_str = "/home/andy/.cache/nvim/packer_hererocks/2.1.1774638290/share/lua/5.1/?.lua;/home/andy/.cache/nvim/packer_hererocks/2.1.1774638290/share/lua/5.1/?/init.lua;/home/andy/.cache/nvim/packer_hererocks/2.1.1774638290/lib/luarocks/rocks-5.1/?.lua;/home/andy/.cache/nvim/packer_hererocks/2.1.1774638290/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/andy/.cache/nvim/packer_hererocks/2.1.1774638290/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -85,15 +85,10 @@ _G.packer_plugins = {
     url = "https://github.com/ibhagwan/fzf-lua"
   },
   ["image.nvim"] = {
-    config = { "\27LJ\2\n]\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14processor\15magick_cli\fbackend\nkitty\nsetup\nimage\frequire\0" },
+    config = { "\27LJ\2\n‹\1\0\0\6\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\a\0005\4\4\0005\5\5\0=\5\6\4=\4\b\3=\3\t\2B\0\2\1K\0\1\0\17integrations\rmarkdown\1\0\1\rmarkdown\0\14filetypes\1\3\0\0\rmarkdown\fvimwiki\1\0\2\14filetypes\0\fenabled\2\1\0\3\17integrations\0\14processor\15magick_cli\fbackend\nkitty\nsetup\nimage\frequire\0" },
     loaded = true,
     path = "/home/andy/.local/share/nvim/site/pack/packer/start/image.nvim",
     url = "https://github.com/3rd/image.nvim"
-  },
-  ["live-server.nvim"] = {
-    loaded = true,
-    path = "/home/andy/.local/share/nvim/site/pack/packer/start/live-server.nvim",
-    url = "https://github.com/barrettruth/live-server.nvim"
   },
   ["mini.pairs"] = {
     loaded = true,
@@ -140,7 +135,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: image.nvim
 time([[Config for image.nvim]], true)
-try_loadstring("\27LJ\2\n]\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\2\14processor\15magick_cli\fbackend\nkitty\nsetup\nimage\frequire\0", "config", "image.nvim")
+try_loadstring("\27LJ\2\n‹\1\0\0\6\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\a\0005\4\4\0005\5\5\0=\5\6\4=\4\b\3=\3\t\2B\0\2\1K\0\1\0\17integrations\rmarkdown\1\0\1\rmarkdown\0\14filetypes\1\3\0\0\rmarkdown\fvimwiki\1\0\2\14filetypes\0\fenabled\2\1\0\3\17integrations\0\14processor\15magick_cli\fbackend\nkitty\nsetup\nimage\frequire\0", "config", "image.nvim")
 time([[Config for image.nvim]], false)
 
 _G._packer.inside_compile = false
