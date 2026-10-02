@@ -129,3 +129,7 @@ for i=1, #popups do
 	})
 end
 
+vim.api.nvim_set_hl(0, "Comment", {
+	fg = "#999999",
+})
+
