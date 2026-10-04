@@ -113,3 +113,29 @@ vim.api.nvim_create_autocmd({ "VimResized", "WinResized" }, {
 
 draw_separators()
 
+function _G.GetGmlIndent()
+  	local lnum = vim.v.lnum
+  	local prev_lnum = vim.fn.prevnonblank(lnum - 1)
+  	if prev_lnum == 0 then
+    	return 0
+  	end
+
+  	local prev = (vim.fn.getline(prev_lnum):gsub("%s*//.*$", ""))
+  	local cur = vim.fn.getline(lnum)
+  	local sw = vim.fn.shiftwidth()
+  	local indent = vim.fn.indent(prev_lnum)
+
+  	if prev:match("{%s*$") then
+  		indent = indent + sw
+  	end
+	if cur:match("^%s*}") then
+		indent = indent - sw
+	end
+
+	return math.max(indent, 0)
+end
+
+vim.bo.indentexpr = "v:lua.GetGmlIndent()"
+vim.bo.indentkeys = "0{,0},0),0],!^F,o,O,e"
+
+
