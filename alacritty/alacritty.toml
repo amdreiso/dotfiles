@@ -4,13 +4,15 @@ live_config_reload = true
 
 [window]
 title = "termy"
+opacity = 1.90
 
 [font]
 size = 16
-normal.family = "SpaceMonoNerdFont"
+#normal.family = "SpaceMonoNerdFont"
+normal.family = "SauceCodePro Nerd Font"
 
 [colors.primary]
-background = "#000000"
+background = "#181818"
 foreground = "#ffffff"
 
 [colors.normal]

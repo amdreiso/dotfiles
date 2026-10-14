@@ -15,8 +15,11 @@ return require("packer").startup(function(use)
 	use "ap/vim-css-color"
 	use "vimwiki/vimwiki"
 	use "echasnovski/mini.pairs"
-	--use "barrettruth/live-server.nvim"
 	use "andweeb/presence.nvim"
+	use {
+		"mg979/vim-visual-multi",
+		branch = "master",
+	}
 	use {
 		"3rd/image.nvim",
 		config = function()

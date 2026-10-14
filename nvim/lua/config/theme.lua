@@ -8,6 +8,30 @@ vim.opt.guicursor = "a:block"
 vim.cmd.highlight({"Normal", "guibg=NONE"})
 vim.cmd.highlight({"NormalNC", "guibg=NONE", "ctermbg=NONE"})
 
+vim.opt.foldenable = true
+vim.opt.foldmethod = "syntax" -- or "expr", "indent", etc.
+vim.opt.foldcolumn = "2"
+vim.opt.fillchars = {
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+}
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	callback = function()
+		vim.cmd("silent! loadview")
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	callback = function()
+		vim.cmd("silent! mkview")
+	end,
+})
+
+vim.api.nvim_set_hl(0, "WinSeparator", { bg = "NONE" })
+
 vim.filetype.add({
 	extension = {
 		tolin = "tolin",

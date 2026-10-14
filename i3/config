@@ -1,14 +1,17 @@
 
 set $mod Mod4
 set $terminal alacritty
-set $wallpaper ~/Pictures/wallpaper.png
+set $wallpaper ~/Pictures/eva.png
 
 font pango:monospace 7
 
-exec_always --no-startup-id xrandr --output HDMI-A-0 --mode 1360x768 --rate 60 --pos 0x0 --output DisplayPort-1 --primary --mode 2560x1440 --rate 164.83 --left-of HDMI-A-0
+exec_always --no-startup-id xrandr --output HDMI-A-0 --mode 1360x768 \
+--rate 60 --pos 0x0 --output DisplayPort-1 --primary --mode 2560x1440 \
+--rate 164.83 --left-of HDMI-A-0
 
 # starter on 1
 bindsym $mod+KP_End exec firefox & steam & $terminal 
+bindsym $mod+KP_Home exec $terminal --working-directory ~/programming/projects/coloniax/.gm/project/ --command tmux
 
 # minecraft 1
 bindsym $mod+KP_Down exec prismlauncher
@@ -25,11 +28,13 @@ bindsym $mod+KP_Page_Up exec echo ɞϊɞ | xclip -selection clipboard
 
 focus_follows_mouse no
 
+exec_always --no-startup-id picom --backend glx
+
 exec_always --no-startup-id ~/.xprofile
 exec_always --no-startup-id xsetroot -cursor_name left_ptr
 
 exec_always --no-startup-id setxkbmap -option caps:escape
-exec_always --no-startup-id feh --bg-scale $wallpaper
+exec_always --no-startup-id feh --bg-fill $wallpaper
 
 bindsym $mod+space exec bash ~/.config/i3/kmap.sh set
 bindsym $mod+q exec pcmanfm
@@ -193,40 +198,50 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# === Frutiger Aero (blue / glass) ===
-
 # Focused window
-set $active_border #4aa3ff
-set $active_border2 #4aa3ff
+set $active_border2 #ccc
 set $active_fg #e6fbff
 
 # Backgrounds
-set $bg_color #0b1c2c
+set $bg_color #181818
 set $bg_color2 #12324a
 
 # Inactive
-set $inactive_border #ffa44a
+set $inactive_border #555
 
 # Urgent
-set $urgent_color #4aa3ff
+set $urgent_color #ff5555
 
 # Workspaces
 set $workspace_bg #0b1c2c
 set $workspace_fg #bfefff
 
 # === Window borders ===
-
 # focused: border background text indicator child_border
-#client.focused          $bg_color $bg_color $active_fg $active_border2 $active_border2
-#client.unfocused        $bg_color $bg_color $workspace_fg $inactive_border $inactive_border
-#client.focused_inactive $bg_color $bg_color $workspace_fg $inactive_border $inactive_border
-#client.urgent           $urgent_color $urgent_color $active_fg $urgent_color $urgent_color
+
+set $BORDER_ACTIVE #202020
+set $BORDER_INACTIVE #101010
+
+set $TEXT_ACTIVE #ffefbf
+set $TEXT_INACTIVE #888888
+
+client.focused          $BORDER_ACTIVE		$BORDER_ACTIVE	 		$TEXT_ACTIVE		$BORDER_ACTIVE 		$BORDER_ACTIVE
+client.unfocused        $BORDER_INACTIVE	$BORDER_INACTIVE 		$TEXT_INACTIVE 		$BORDER_INACTIVE 	$BORDER_INACTIVE	
+client.focused_inactive $BORDER_INACTIVE	$BORDER_INACTIVE 		$TEXT_INACTIVE 		$BORDER_INACTIVE 	$BORDER_INACTIVE
+client.urgent           $urgent_color $urgent_color $active_fg $urgent_color $urgent_color
 #client.placeholder      $bg_color $bg_color $workspace_fg $bg_color $bg_color
+
+client.background       #000000
 
 bar {
 	status_command i3status
 }
 
 for_window [window_role="PictureInPicture"] sticky enable
+for_window [window_role="alwaysontop"] sticky enable
 bindsym $mod+t [con_mark="alwaysontop"] focus
+
+default_border none
+for_window [floating] 	border pixel 2
+for_window [tiling] 	border pixel 2
 

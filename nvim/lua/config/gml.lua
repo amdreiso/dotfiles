@@ -1,36 +1,75 @@
 
+local colorscheme = {
+	variable = {fg="#b2b1ff"},
+	localvariable = {fg="#ffff88"},
+	keyword = {fg="#ffb871", bold=true},
+	number = {fg="#ff8080"},
+	enum = {fg="#ff8080"},
+	comment = {fg="#5b995b"},
+	func = {fg="#ffb871"},
+	str = {fg="#ffff00"},
+	bool = {fg="#ff8080"},
+
+	delim = {fg = "#7777ff", bold = true, bg = "NONE"},
+}
+
+vim.api.nvim_set_hl(0, "Folded", {
+	fg = "#333344",
+	bg = "#000010",
+	italic = true,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gml",
 	callback = function()
 		vim.cmd([[
-			syntax keyword GmlKeyword new static constructor xor div self function for if else switch repeat return enum var 
+			syntax keyword GmlKeyword break new static constructor xor div self function for if else switch repeat return enum var case default exit throw do with then
 			syntax match GmlKeyword /#macro\>/
+			syntax match GmlKeyword /#region\>/
+			syntax match GmlKeyword /#endregion\>/
 			syntax match GmlNumber /\v<\d+>/
+			syntax keyword GmlBool false true undefined
 			syntax match GmlComment /\/\/.*/
+			syntax match gmlFunction "\<\h\w*\>\ze\s*("
 			syntax match GmlID /^@.*$/
 			syntax region GmlString start=/"/ skip=/\\"/ end=/"/
 		]])
 	end,
 })
 
-vim.api.nvim_set_hl(0, "GmlComment", {
-	fg = "#33aa55",
-})
+vim.keymap.set("n", "<leader>s", function()
+	local path = vim.fn.expand("%:p:h")
 
-vim.api.nvim_set_hl(0, "GmlKeyword", {
-	fg = "#ffff55",
-	bold = true,
-})
+	while path ~= "/" do
+		if vim.fn.isdirectory(path.."/.gm") == 1 then
+			local project = vim.fn.fnamemodify(path.."/.gm", ":h")
 
-vim.api.nvim_set_hl(0, "GmlNumber", {
-	fg = "#ff5555",
-})
+			vim.fn.jobstart({
+				"glim",
+				"sync",
+			}, {
+				cwd = project,
+			})
 
---vim.api.nvim_set_hl(0, "GmlID", {
---	fg = "#ff0000",
---	bg = "#202020",
---	bold = true,
---})
+			print("Synchronized gml project")
+			return
+		end
+
+		path = vim.fn.fnamemodify(path, ":h")
+	end
+end)
+
+vim.opt.foldmethod = "marker"
+vim.opt.foldmarker = "#region,#endregion"
+vim.keymap.set("n", "<leader>p", "za", { desc = "Toggle fold" })
+
+vim.api.nvim_set_hl(0, "GmlComment", colorscheme.comment)
+vim.api.nvim_set_hl(0, "GmlKeyword", colorscheme.keyword)
+vim.api.nvim_set_hl(0, "GmlNumber", colorscheme.number)
+vim.api.nvim_set_hl(0, "GmlBool", colorscheme.bool)
+vim.api.nvim_set_hl(0, "GmlID", colorscheme.delim)
+vim.api.nvim_set_hl(0, "GmlFunction", colorscheme.func)
+vim.api.nvim_set_hl(0, "GmlString", colorscheme.str)
 
 local function jump_gml_id(backward)
 	local flags = backward and "bw" or "w"
@@ -50,8 +89,6 @@ vim.api.nvim_create_autocmd("FileType", {
 			vim.tbl_extend("force", opts, { desc = "Previous GmlID" }))
 	end,
 })
-
-vim.api.nvim_set_hl(0, "GmlID", { fg = "#7777ff", bold = true, bg = "NONE" })
 
 local ns = vim.api.nvim_create_namespace("gml_separator")
 
@@ -135,7 +172,40 @@ function _G.GetGmlIndent()
 	return math.max(indent, 0)
 end
 
-vim.bo.indentexpr = "v:lua.GetGmlIndent()"
-vim.bo.indentkeys = "0{,0},0),0],!^F,o,O,e"
+function _G.GetGmlIndent()
+	local lnum = vim.v.lnum
+	local prev_lnum = vim.fn.prevnonblank(lnum - 1)
+	if prev_lnum == 0 then
+		return 0
+	end
 
+	local prev = (vim.fn.getline(prev_lnum):gsub("%s*//.*$", ""))
+	local cur = vim.fn.getline(lnum)
+	local sw = vim.fn.shiftwidth()
+	local indent = vim.fn.indent(prev_lnum)
+
+	if prev:match("{%s*$") then
+		indent = indent + sw
+	end
+	if cur:match("^%s*}") then
+		indent = indent - sw
+	end
+
+	return math.max(indent, 0)
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "gml",
+	callback = function(args)
+		vim.schedule(function()
+			if not vim.api.nvim_buf_is_valid(args.buf) then return end
+			local bo = vim.bo[args.buf]
+			bo.cindent = false
+			bo.smartindent = false
+			bo.autoindent = true
+			bo.indentexpr = "v:lua.GetGmlIndent()"
+			bo.indentkeys = "0{,0},0),0],!^F,o,O,e"
+		end)
+	end,
+})
 
