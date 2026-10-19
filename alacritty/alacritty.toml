@@ -3,16 +3,16 @@
 live_config_reload = true
 
 [window]
-title = "termy"
+title = "terminal :3"
 opacity = 1.90
 
 [font]
-size = 16
+size = 8
 #normal.family = "SpaceMonoNerdFont"
-normal.family = "SauceCodePro Nerd Font"
+normal.family = "Terminus"
 
 [colors.primary]
-background = "#181818"
+background = "#000000"
 foreground = "#ffffff"
 
 [colors.normal]
@@ -23,7 +23,7 @@ yellow = "#ffff55"
 green = "#55ff55"
 blue = "#5555ff"
 cyan = "#55ffff"
-magenta = "#ff00ff"
+magenta = "#ff55ff"
 
 [mouse]
 hide_when_typing = true

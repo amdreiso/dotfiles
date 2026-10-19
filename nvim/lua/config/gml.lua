@@ -209,3 +209,15 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+function _G.GmlStatusEvent()
+  for i = vim.fn.line("."), 1, -1 do
+    local event = vim.fn.getline(i):match("@([%w_]+)")
+    if event then
+      return event:upper()
+    end
+  end
+  return ""
+end
+
+vim.opt.statusline = "%f %h%m%r%=%l:%c %p%% %{v:lua.GmlStatusEvent()}"
+

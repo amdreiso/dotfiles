@@ -8,7 +8,7 @@
 alias ls='lsd -la --color=auto'
 alias grep='grep --color=auto'
 alias vim="nvim"
-PS1='\n \[\e[07m\] 󱃋 isopod 󱃋 \[\e[0m\] \W\ > '
+PS1='\n \[\e[07m\] isopod \[\e[0m\] \W\ > '
 #PS1='\n  󰢚  \W\ > '
 
 export PATH="$HOME/.local/bin:$PATH"

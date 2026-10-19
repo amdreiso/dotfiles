@@ -3,7 +3,7 @@ set $mod Mod4
 set $terminal alacritty
 set $wallpaper ~/Pictures/eva.png
 
-font pango:monospace 7
+font pango:Terminus 8
 
 exec_always --no-startup-id xrandr --output HDMI-A-0 --mode 1360x768 \
 --rate 60 --pos 0x0 --output DisplayPort-1 --primary --mode 2560x1440 \
@@ -219,10 +219,10 @@ set $workspace_fg #bfefff
 # === Window borders ===
 # focused: border background text indicator child_border
 
-set $BORDER_ACTIVE #202020
-set $BORDER_INACTIVE #101010
+set $BORDER_ACTIVE #181818
+set $BORDER_INACTIVE #000000
 
-set $TEXT_ACTIVE #ffefbf
+set $TEXT_ACTIVE #c1c1ff
 set $TEXT_INACTIVE #888888
 
 client.focused          $BORDER_ACTIVE		$BORDER_ACTIVE	 		$TEXT_ACTIVE		$BORDER_ACTIVE 		$BORDER_ACTIVE

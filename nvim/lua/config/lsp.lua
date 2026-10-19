@@ -19,35 +19,33 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 vim.lsp.config("lua_ls", {
-	settings = {
-		Lua = {
-			runtime = {
-				version = "LuaJIT",
-			},
+  capabilities = capabilities,
 
-			diagnostics = {
-				globals = {
-					"_G",
-					"vim",
-				},
-				enable = false
-			},
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
 
-			workspace = {
-				checkThirdParty = false,
-				library = vim.api.nvim_get_runtime_file("", true),
-				maxPreload = 5000,
-				preloadFileSize = 1000,
-			},
+      diagnostics = {
+        globals = { "vim" },
+        disable = { "undefined-global" },
+      },
 
-			completion = {
-				callSnippet = "Both",
-			},
+      workspace = {
+        checkThirdParty = false,
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
 
-			hint = {
-				enable = true,
-			},
-		},
-	},
+      completion = {
+        callSnippet = "Both",
+        keywordSnippet = "Disable",
+      },
+
+      hint = {
+        enable = true,
+      },
+    },
+  },
 })
 
