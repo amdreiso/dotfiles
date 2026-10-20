@@ -13,6 +13,9 @@ local options = {
 	mouse = "",
 
 	clipboard = "unnamedplus",
+
+	list = true,
+	listchars = {space="·", trail = "·", tab="→ "}, 
 }
 
 for key, val in pairs(options) do

@@ -7,7 +7,7 @@ title = "terminal :3"
 opacity = 1.90
 
 [font]
-size = 8
+size = 9
 #normal.family = "SpaceMonoNerdFont"
 normal.family = "Terminus"
 

@@ -6,6 +6,7 @@ require("config.minipairs")
 require("config.options") 
 require("config.theme") 
 require("config.vimwiki")
+require("config.gml")
 
 vim.opt.shortmess:append("I")
 
@@ -19,5 +20,4 @@ vim.keymap.set("n", "r", function()
     vim.api.nvim_feedkeys("r" .. vim.fn.keytrans(char), "n", false)
   end
 end, { noremap = true })
-
 

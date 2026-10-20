@@ -1,41 +1,48 @@
 
-local colorscheme = {
-	variable = {fg="#b2b1ff"},
-	localvariable = {fg="#ffff88"},
-	keyword = {fg="#ffb871", bold=true},
-	number = {fg="#ff8080"},
-	enum = {fg="#ff8080"},
-	comment = {fg="#5b995b"},
-	func = {fg="#ffb871"},
-	str = {fg="#ffff00"},
-	bool = {fg="#ff8080"},
-
-	delim = {fg = "#7777ff", bold = true, bg = "NONE"},
-}
-
-vim.api.nvim_set_hl(0, "Folded", {
-	fg = "#333344",
-	bg = "#000010",
-	italic = true,
+require("gml").setup({
+  highlights = {
+    GmlVariable        = { fg = "#b2b1ff" },
+    GmlLocalVariable   = { fg = "#ffff88" },
+    GmlKeyword         = { fg = "#ffb871", bold = true },
+    GmlPreproc         = { fg = "#ffb871", bold = true },
+    GmlFunction        = { fg = "#ffb871" },
+    GmlConstructor     = { fg = "#ffb871" },
+    GmlNumber          = { fg = "#ff8080" },
+    GmlConstant        = { fg = "#ff8080" },
+    GmlEnumName        = { fg = "#ff8080" },
+    GmlEnumValue       = { fg = "#ff8080" },
+    GmlMacro           = { fg = "#ff8080" },
+    GmlBuiltinConstant = { fg = "#ff8080" },
+    GmlAsset 			= { fg = "#ff8080", bold = true },
+    GmlBuiltinVariable = { fg = "#50ff50" },
+    GmlComment         = { fg = "#5b995b" },
+    GmlString          = { fg = "#ffff00" },
+    GmlID              = { fg = "#7777ff", bold = true, bg = "NONE", nocombine = true },
+  },
 })
+
+local function jump_gml_id(backward)
+	local flags = backward and "bw" or "w"
+	vim.cmd("normal! m'") -- save position so <C-o> jumps back
+	for _ = 1, vim.v.count1 do
+		vim.fn.search("^@", flags)
+	end
+end
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "gml",
-	callback = function()
-		vim.cmd([[
-			syntax keyword GmlKeyword break new static constructor xor div self function for if else switch repeat return enum var case default exit throw do with then
-			syntax match GmlKeyword /#macro\>/
-			syntax match GmlKeyword /#region\>/
-			syntax match GmlKeyword /#endregion\>/
-			syntax match GmlNumber /\v<\d+>/
-			syntax keyword GmlBool false true undefined
-			syntax match GmlComment /\/\/.*/
-			syntax match gmlFunction "\<\h\w*\>\ze\s*("
-			syntax match GmlID /^@.*$/
-			syntax region GmlString start=/"/ skip=/\\"/ end=/"/
-		]])
+	callback = function(args)
+		local opts = { buffer = args.buf, silent = true }
+		vim.keymap.set("n", "<leader>n", function() jump_gml_id(false) end,
+			vim.tbl_extend("force", opts, { desc = "Next GmlID" }))
+		vim.keymap.set("n", "<leader>N", function() jump_gml_id(true) end,
+			vim.tbl_extend("force", opts, { desc = "Previous GmlID" }))
 	end,
 })
+
+vim.opt.foldmethod = "marker"
+vim.opt.foldmarker = "#region,#endregion"
+vim.keymap.set("n", "<leader>p", "za", { desc = "Toggle fold" })
 
 vim.keymap.set("n", "<leader>s", function()
 	local path = vim.fn.expand("%:p:h")
@@ -58,37 +65,6 @@ vim.keymap.set("n", "<leader>s", function()
 		path = vim.fn.fnamemodify(path, ":h")
 	end
 end)
-
-vim.opt.foldmethod = "marker"
-vim.opt.foldmarker = "#region,#endregion"
-vim.keymap.set("n", "<leader>p", "za", { desc = "Toggle fold" })
-
-vim.api.nvim_set_hl(0, "GmlComment", colorscheme.comment)
-vim.api.nvim_set_hl(0, "GmlKeyword", colorscheme.keyword)
-vim.api.nvim_set_hl(0, "GmlNumber", colorscheme.number)
-vim.api.nvim_set_hl(0, "GmlBool", colorscheme.bool)
-vim.api.nvim_set_hl(0, "GmlID", colorscheme.delim)
-vim.api.nvim_set_hl(0, "GmlFunction", colorscheme.func)
-vim.api.nvim_set_hl(0, "GmlString", colorscheme.str)
-
-local function jump_gml_id(backward)
-	local flags = backward and "bw" or "w"
-	vim.cmd("normal! m'") -- save position so <C-o> jumps back
-	for _ = 1, vim.v.count1 do
-		vim.fn.search("^@", flags)
-	end
-end
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "gml",
-	callback = function(args)
-		local opts = { buffer = args.buf, silent = true }
-		vim.keymap.set("n", "<leader>n", function() jump_gml_id(false) end,
-			vim.tbl_extend("force", opts, { desc = "Next GmlID" }))
-		vim.keymap.set("n", "<leader>N", function() jump_gml_id(true) end,
-			vim.tbl_extend("force", opts, { desc = "Previous GmlID" }))
-	end,
-})
 
 local ns = vim.api.nvim_create_namespace("gml_separator")
 
@@ -150,28 +126,8 @@ vim.api.nvim_create_autocmd({ "VimResized", "WinResized" }, {
 
 draw_separators()
 
-function _G.GetGmlIndent()
-  	local lnum = vim.v.lnum
-  	local prev_lnum = vim.fn.prevnonblank(lnum - 1)
-  	if prev_lnum == 0 then
-    	return 0
-  	end
 
-  	local prev = (vim.fn.getline(prev_lnum):gsub("%s*//.*$", ""))
-  	local cur = vim.fn.getline(lnum)
-  	local sw = vim.fn.shiftwidth()
-  	local indent = vim.fn.indent(prev_lnum)
-
-  	if prev:match("{%s*$") then
-  		indent = indent + sw
-  	end
-	if cur:match("^%s*}") then
-		indent = indent - sw
-	end
-
-	return math.max(indent, 0)
-end
-
+-- GML Indentation
 function _G.GetGmlIndent()
 	local lnum = vim.v.lnum
 	local prev_lnum = vim.fn.prevnonblank(lnum - 1)
@@ -208,6 +164,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		end)
 	end,
 })
+
 
 function _G.GmlStatusEvent()
   for i = vim.fn.line("."), 1, -1 do

@@ -39,8 +39,6 @@ vim.filetype.add({
 	},
 })
 
-require("config.gml")
-
 local name = 0
 
 local theme = {
@@ -72,6 +70,7 @@ vim.api.nvim_set_hl(0, "Identifier", theme.identifier)
 vim.api.nvim_set_hl(0, "String", theme.str)
 vim.api.nvim_set_hl(0, "Visual", theme.visual)
 vim.api.nvim_set_hl(0, "Number", theme.number)
+vim.api.nvim_set_hl(0, "Whitespace", { fg = "#151515" })
 
 vim.api.nvim_set_hl(0, "@boolean.lua", theme.lua.boolean)
 vim.api.nvim_set_hl(0, "@property.lua", theme.lua.property)
