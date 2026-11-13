@@ -1,0 +1,46 @@
+# Default colors
+[colors.primary]
+background = '#f7f7f7'
+foreground = '#3d3426'
+
+# Normal colors (warm daylight palette)
+[colors.normal]
+black   = '#5a4d3d'
+red     = '#c96b4b'
+green   = '#7a9b57'
+yellow  = '#c9a227'
+blue    = '#5f87b3'
+magenta = '#9a6fa8'
+cyan    = '#5aa7a2'
+white   = '#e8dcf2'
+
+# Bright colors (sunlit highlights)
+[colors.bright]
+black   = '#7a6b58'
+red     = '#e08a65'
+green   = '#98b96f'
+yellow  = '#e2bc3d'
+blue    = '#7aa6d1'
+magenta = '#b18ac0'
+cyan    = '#73c2be'
+white   = '#fff9e8'
+
+[font]
+normal = { family = "SauceCodePro Nerd Font" }
+bold = { family = "SauceCodePro Nerd Font" }
+italic = { family = "SauceCodePro Nerd Font" }
+
+size = 14.0
+
+[cursor]
+style = { shape="Block", blinking="Never" }
+
+[mouse]
+hide_when_typing = true
+
+[window]
+opacity = 1
+
+[window.padding]
+x = 2
+y = 2

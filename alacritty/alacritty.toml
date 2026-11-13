@@ -1,0 +1,29 @@
+
+[general]
+live_config_reload = true
+
+[window]
+title = "term"
+opacity = 1.90
+
+[font]
+size = 12
+normal.family = "Terminus"
+
+[colors.primary]
+background = "#101010"
+foreground = "#ffffff"
+
+[colors.normal]
+black = "#181818"
+white = "#eeeeee"
+red = "#ff8888"
+yellow = "#ffff88"
+green = "#88ff88"
+blue = "#8888ff"
+cyan = "#88ffff"
+magenta = "#ff88ff"
+
+[mouse]
+hide_when_typing = true
+
