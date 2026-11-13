@@ -10,7 +10,8 @@ alias grep='grep --color=auto'
 alias vim='nvim'
 PS1='\e[0;1m \h \e[m\w $ '
 
-#[andy@butterfly ~]
+export PATH=~/.local/bin:$PATH
+export PATH=~/.local/share:$PATH
 
 setxkbmap -option caps:escape
 
