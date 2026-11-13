@@ -8,7 +8,7 @@
 alias ls='ls -la --color=auto'
 alias grep='grep --color=auto'
 alias vim='nvim'
-PS1='\e[0;1m \h \e[m\w $ '
+PS1='\n\e[0;31m\W/\e[m \e[0;1m>\e[m '
 
 export PATH=~/.local/bin:$PATH
 export PATH=~/.local/share:$PATH
