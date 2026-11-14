@@ -2,7 +2,7 @@
 cp ../.tmux.conf ./
 cp ../.bashrc ./
 cp ../.vimrc ./
-folders=("kitty" "nvim" "i3" "i3status" "rofi" "upload_dotfiles.sh" ".bashrc" ".vimrc" ".tmux.conf" "theme" "alacritty")
+folders=("fastfetch" "kitty" "nvim" "i3" "i3status" "rofi" "upload_dotfiles.sh" ".bashrc" ".vimrc" ".tmux.conf" "theme" "alacritty")
 for folder in "${folders[@]}";
 do 
 	git add "$folder" 

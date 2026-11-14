@@ -1,0 +1,57 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "display": {
+		"separator": " = ",
+		"color": {
+			"title": "#ffaa33",
+			"keys": "#8877ff"
+		},
+        "size": {
+            "maxPrefix": "MB",
+            "ndigits": 0,
+            "spaceBeforeUnit": "never"
+        },
+        "freq": {
+            "ndigits": 3,
+            "spaceBeforeUnit": "never"
+        }
+    },
+    "modules": [
+		{
+			"type": "title",
+			"format": "{user-name-colored} @ {host-name-colored}"
+		},
+        "separator",
+        "os",
+        "uptime",
+        {
+            "type": "packages",
+            "combined": true
+        },
+        "shell",
+        {
+            "type": "wm",
+            "key": "WM"
+        },
+        "terminal",
+        {
+            "type": "gpu",
+            "key": "GPU",
+            "format": "{name}"
+        },
+        {
+            "type": "memory",
+            "format": "{used} / {total}"
+        },
+        "break"
+    ],
+	"logo": {
+		"source": "/home/andy/.config/fastfetch/logo.txt",      // Built-in logo name or file path
+		"padding": {
+			"top": 0,          // Top padding
+			"left": 0,         // Left padding
+			"right": 2         // Right padding
+		}
+	}
+}
+
